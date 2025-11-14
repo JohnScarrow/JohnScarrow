@@ -16,7 +16,7 @@ Here are some ideas to get you started:
 -->
 
 
-# Hi, I'm John Scarrow 👋
+# Hi, I'm John A Scarrow 👋
 Innovative developer exploring AI-driven workflows, cloud infrastructure, and full-stack projects.  
 Passionate about building scalable solutions, experimenting with autonomous systems, and leveraging modern tools like React, Express, and AWS.
 
