@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0f1724"/>
+      <stop offset="1" stop-color="#0b3a53"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="#fff" font-family="Segoe UI, Roboto, Helvetica, Arial" font-weight="700">
+    <text x="60" y="120" font-size="48">Battleship-ML</text>
+    <text x="60" y="170" font-size="20" fill="#c9e7ff" font-weight="400">WebAssembly demo</text>
+  </g>
+  <g transform="translate(60,220)" fill="none" stroke="#9bd3ff" stroke-width="8">
+    <rect width="520" height="340" rx="8"/>
+    <line x1="0" y1="85" x2="520" y2="85" stroke-opacity="0.35"/>
+    <line x1="0" y1="170" x2="520" y2="170" stroke-opacity="0.25"/>
+    <line x1="0" y1="255" x2="520" y2="255" stroke-opacity="0.15"/>
+    <line x1="85" y1="0" x2="85" y2="340" stroke-opacity="0.35"/>
+    <line x1="170" y1="0" x2="170" y2="340" stroke-opacity="0.25"/>
+  </g>
+  <g transform="translate(620,240)" fill="#fff" font-family="Segoe UI, Roboto, Helvetica, Arial">
+    <text x="0" y="0" font-size="20" font-weight="700">Play the demo</text>
+    <text x="0" y="34" font-size="14" fill="#c9e7ff">https://johnscarrow.github.io/battleship-ml/</text>
+  </g>
+</svg>
