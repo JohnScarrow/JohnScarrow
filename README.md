@@ -67,6 +67,53 @@ Play the demo
 
 You can replace `<your-username>` and `<repo>` with your GitHub username and this repository name if you want the iframe page to live under this repo (for example `https://johnscarrow.github.io/JohnScarrow/`).
 
+### Battleship-ML — GPU setup (local)
+
+If you want to run the Battleship-ML tuner locally with GPU acceleration (to play many more games concurrently), follow these steps.
+
+- Prerequisites:
+	- NVIDIA GPU with a compatible driver installed.
+	- CUDA toolkit (nvcc) installed and on your `PATH` (CUDA 11+ recommended).
+	- Standard build tools (`g++`, `make`, etc.).
+
+- Quick checks:
+	- `nvidia-smi` — confirm the GPU is visible and drivers are loaded.
+	- `nvcc --version` — confirm CUDA toolchain is installed.
+
+- Build the CUDA-enabled tuner (from the `battleship-ml/` folder):
+```bash
+cd battleship-ml
+./scripts/build_tuner_cuda.sh
+```
+This creates a `tuner` binary that will use CUDA if available.
+
+- Running for high concurrency:
+	- Single-process (use `threads` to increase concurrency inside one process):
+```bash
+./tuner games=10000 threads=32 mcIterations=1600 > results.csv
+```
+	- Multiple processes (useful for many independent runs or multi-GPU):
+```bash
+# 4 processes sharing the same GPU (they will contend for GPU resources)
+for i in 1 2 3 4; do
+	./tuner games=2000 threads=8 mcIterations=800 > results-$i.csv 2>&1 &
+done
+
+# Pin one process to GPU 0 and one to GPU 1 on multi-GPU systems
+CUDA_VISIBLE_DEVICES=0 ./tuner games=5000 threads=8 mcIterations=1200 > out-gpu0.csv &
+CUDA_VISIBLE_DEVICES=1 ./tuner games=5000 threads=8 mcIterations=1200 > out-gpu1.csv &
+```
+
+- Monitoring & tuning:
+	- Monitor `nvidia-smi` (e.g. `watch -n1 nvidia-smi`) to observe GPU utilization and memory.
+	- Increase `mcIterations` to give the GPU more work per Monte-Carlo decision (reduces host/GPU overhead).
+	- Adjust `threads` to match CPU cores and how the workload pipelines to the GPU.
+
+- Troubleshooting:
+	- If the binary falls back to CPU, confirm you built with the provided CUDA script and that `nvidia-smi` and `nvcc` succeed.
+	- For driver/CUDA mismatch, update your driver or use a CUDA toolkit version compatible with your driver.
+
+
 ---
 
 ## Other Projects
