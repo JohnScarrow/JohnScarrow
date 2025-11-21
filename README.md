@@ -33,7 +33,7 @@ A modern take on the classic Battleship game with machine learning components. B
 
 Screenshot / Demo
 
-![battleship-screenshot](docs/images/battleship-placeholder.svg)
+![battleship-screenshot](image.png)
 
 Quick start (example)
 
