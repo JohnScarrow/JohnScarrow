@@ -138,8 +138,8 @@ CUDA_VISIBLE_DEVICES=1 ./tuner games=5000 threads=8 mcIterations=1200 > out-gpu1
 ## Contact & Links
 
 - **GitHub:** `https://github.com/JohnScarrow`
-- **LinkedIn:** (add your LinkedIn URL)
-- **Email:** (add your preferred contact)
+- **LinkedIn:** `(https://www.linkedin.com/in/johnascarrow/)`
+- **Portfolio:** `https://johnscarrow.github.io/`
 
 If you'd like, I can:
 
