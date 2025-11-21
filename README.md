@@ -129,8 +129,8 @@ CUDA_VISIBLE_DEVICES=1 ./tuner games=5000 threads=8 mcIterations=1200 > out-gpu1
 
 ## Tech & Tools
 
-- **Languages:** C++, Python, JavaScript
-- **Frameworks / Tools:** React, Express, PyTorch / TensorFlow, CMake, Emscripten
+- **Languages:** C++, Python, JavaScript, Arduino/C
+- **Frameworks / Tools:** React, Express, PyTorch / TensorFlow, Electron, Emscripten
 - **Cloud / DevOps:** AWS, GitHub, Docker (learning)
 
 ---
