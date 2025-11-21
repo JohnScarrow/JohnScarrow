@@ -53,10 +53,6 @@ cmake .. && make
 python3 train.py --config configs/train.yaml
 ```
 
-Notes
-
-- Add your compiled WASM demo to `docs/` or a `gh-pages` branch to host a playable demo.
-- Replace the screenshot at `docs/images/battleship-placeholder.png` with an actual image or GIF of gameplay.
 
 Play the demo
 
