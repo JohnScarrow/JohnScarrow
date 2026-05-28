@@ -1,152 +1,56 @@
-<!--
-# Hi there 👋
+# Hi — I'm John Scarrow
 
-**JohnScarrow/JohnScarrow** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-
-
-# Hi — I'm John Scarrow 👋
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-Welcome — this repository is the special profile README for my GitHub and serves as a lightweight portfolio landing page. Below you'll find a featured project, highlights of my work, tech stack, and contact links.
+CS student at North Idaho College building across the stack — from x86 Assembly and C++17 game engines to real-time computer vision pipelines and full-stack web apps.
 
 ---
 
-## Featured Project — Battleship-ML
+## 2026 Highlights
 
-A modern take on the classic Battleship game with machine learning components. Battleship-ML demonstrates applied ML in a game environment, a configurable CLI, and an experimental web demo via WebAssembly.
-
-- **Highlights:** AI opponent (reinforcement learning / heuristic hybrids), modular game engine, training pipeline, and an optional browser demo (WASM).
-- **Tech:** C++, Python (training), WebAssembly, PyTorch/TensorFlow (or your preferred ML lib), build tooling (CMake/emscripten).
-
-Screenshot / Demo
-
-![battleship-screenshot](image.png)
-
-Quick start (example)
-
-```bash
-# Clone this repo (if Battleship code is in a subfolder, adjust accordingly)
-git clone https://github.com/JohnScarrow/JohnScarrow.git
-cd JohnScarrow
-
-# If the Battleship project is in `battleship-ml/`:
-cd battleship-ml
-# Build/run (example; replace with your project's build commands)
-mkdir -p build && cd build
-cmake .. && make
-./battleship
-
-# Or run the training script (example)
-python3 train.py --config configs/train.yaml
-```
-
-
-Play the demo
-
-> Note: GitHub sanitizes `README.md` HTML and disallows embedding active content like `iframe`. Because of this you cannot directly play the demo inside the README itself. Use the links below to open the demo or visit a Pages-hosted iframe page.
-
-- Direct demo URL: https://johnscarrow.github.io/battleship-ml/
-- Open GitHub Pages iframe page: `https://<your-username>.github.io/<repo>/` after enabling Pages (I added a `docs/index.html` that embeds the demo; see below).
-
-You can replace `<your-username>` and `<repo>` with your GitHub username and this repository name if you want the iframe page to live under this repo (for example `https://johnscarrow.github.io/JohnScarrow/`).
-
-### Battleship-ML — GPU setup (local)
-
-If you want to run the Battleship-ML tuner locally with GPU acceleration (to play many more games concurrently), follow these steps.
-
-- Prerequisites:
-	- NVIDIA GPU with a compatible driver installed.
-	- CUDA toolkit (nvcc) installed and on your `PATH` (CUDA 11+ recommended).
-	- Standard build tools (`g++`, `make`, etc.).
-
-- Quick checks:
-	- `nvidia-smi` — confirm the GPU is visible and drivers are loaded.
-	- `nvcc --version` — confirm CUDA toolchain is installed.
-
-- Build the CUDA-enabled tuner (from the `battleship-ml/` folder):
-```bash
-cd battleship-ml
-./scripts/build_tuner_cuda.sh
-```
-This creates a `tuner` binary that will use CUDA if available.
-
-- Running for high concurrency:
-	- Single-process (use `threads` to increase concurrency inside one process):
-```bash
-./tuner games=10000 threads=32 mcIterations=1600 > results.csv
-```
-	- Multiple processes (useful for many independent runs or multi-GPU):
-```bash
-# 4 processes sharing the same GPU (they will contend for GPU resources)
-for i in 1 2 3 4; do
-	./tuner games=2000 threads=8 mcIterations=800 > results-$i.csv 2>&1 &
-done
-
-# Pin one process to GPU 0 and one to GPU 1 on multi-GPU systems
-CUDA_VISIBLE_DEVICES=0 ./tuner games=5000 threads=8 mcIterations=1200 > out-gpu0.csv &
-CUDA_VISIBLE_DEVICES=1 ./tuner games=5000 threads=8 mcIterations=1200 > out-gpu1.csv &
-```
-
-- Monitoring & tuning:
-	- Monitor `nvidia-smi` (e.g. `watch -n1 nvidia-smi`) to observe GPU utilization and memory.
-	- Increase `mcIterations` to give the GPU more work per Monte-Carlo decision (reduces host/GPU overhead).
-	- Adjust `threads` to match CPU cores and how the workload pipelines to the GPU.
-
-- Troubleshooting:
-	- If the binary falls back to CPU, confirm you built with the provided CUDA script and that `nvidia-smi` and `nvcc` succeed.
-	- For driver/CUDA mismatch, update your driver or use a CUDA toolkit version compatible with your driver.
-
+### AutoDetect-Wildlife — [Repo](https://github.com/JohnScarrow/AutoDetect-WIldLife)
+Real-time dashcam wildlife detection using **YOLOv8s + OpenCV**. Runs at 60–80 FPS (vs. ~5–10 FPS with the MegaDetector baseline). Filters to relevant forest-road animals, shows a red close-animal warning when a bounding box exceeds 35% of frame height, and supports a one-line swap to a custom-trained model.
+`Python` `YOLOv8` `OpenCV` `Computer Vision`
 
 ---
 
-## Other Projects
+### Bounty of Juan — [Repo](https://github.com/JohnScarrow/Bounty_of_Juan)
+2D top-down survivor shooter in **C++17 / SFML**. Infinite tiling world, auto-targeting projectiles, wave-based enemy spawning, live HUD (time / kills / accuracy), pause/resume, and a full results screen. Uses a polymorphic `Character` base class shared between the player and enemy types.
+`C++17` `SFML` `OOP` `Game Dev`
 
-- **Responsible Consumption** — React + Express. A journaling app for mindful consumption. Source available in separate repo(s).
-- **PlaylistFor.ME** — JavaScript. Playlist generator using external music APIs.
+---
+
+### Wild West Shootout: High Noon — [Repo](https://github.com/JohnScarrow/WIld-West-Shootout-High_Noon)
+A fully playable game written in **x86 Assembly** for the CS-155 final. Manual memory management, register allocation, and direct hardware interaction — low-level programming that most developers never touch.
+`x86 Assembly` `Systems Programming`
+
+---
+
+## Other Notable Projects
+
+| Project | Description | Tech |
+|---------|-------------|------|
+| [Battleship-ML](https://github.com/JohnScarrow/battleship-ml) | AI vs AI Battleship with Monte-Carlo heuristics, live heatmap, compiled to WebAssembly | C++, WASM, Emscripten |
+| [Project-Insight-Hub](https://github.com/JohnScarrow/Project-Insight-Hub) | Full-stack project management platform with RBAC, time tracking, cost monitoring | TypeScript, React, Fastify, PostgreSQL |
+| [merge-word-to-pdf](https://github.com/JohnScarrow/merge-word-to-pdf) | Batch-merges all .docx files in a directory into a single PDF | Python |
 
 ---
 
 ## About Me
 
-- 🎓 First-year Computer Science student at North Idaho College
-- 💻 Full‑stack development, AI integration, and systems engineering
-- 🛠 Projects: game engines, ML experiments, autonomous systems, and cloud tooling
-
----
+- CS student at **North Idaho College** — completed another successful year in 2026
+- Strong in **systems programming** (C++, x86 Assembly), **Python ML/CV** (YOLOv8, OpenCV, MediaPipe), and **full-stack web** (TypeScript, React, Express)
+- Building toward a career in software engineering with depth across the stack
 
 ## Tech & Tools
 
-- **Languages:** C++, Python, JavaScript, Arduino/C
-- **Frameworks / Tools:** React, Express, PyTorch / TensorFlow, Electron, Emscripten
-- **Cloud / DevOps:** AWS, GitHub, Docker (learning)
+**Languages:** C++17, x86 Assembly, Python, TypeScript, JavaScript
+**ML / CV:** YOLOv8, OpenCV, MediaPipe, WebAssembly (Emscripten)
+**Web:** React, Express, Fastify, PostgreSQL
+**Cloud / DevOps:** AWS, GitHub Actions, Docker
 
 ---
 
-## Contact & Links
+## Contact
 
-- **GitHub:** `https://github.com/JohnScarrow`
-- **LinkedIn:** `(https://www.linkedin.com/in/johnascarrow/)`
-- **Portfolio:** `https://johnscarrow.github.io/`
-
-If you'd like, I can:
-
-- add live demo hosting via GitHub Pages or `gh-pages` branch
-- create a minimal `docs/` site for the WASM demo
-- add screenshots and a short walkthrough for Battleship-ML
-
----
-
-⭐ Thanks for stopping by — want me to set up GitHub Pages next? (I can scaffold a `docs/` site and add a demo.)
+- **Portfolio:** [johnscarrow.github.io](https://johnscarrow.github.io/)
+- **LinkedIn:** [linkedin.com/in/johnascarrow](https://www.linkedin.com/in/johnascarrow/)
+- **Live Demo:** [Battleship-ML WebAssembly](https://johnscarrow.github.io/battleship-ml/)
